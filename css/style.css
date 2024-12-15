@@ -1,0 +1,304 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    min-height: 100vh;
+    background: url('home.jpg') no-repeat center center/cover;
+    flex-direction: column;
+    margin: 0; /* Увери се дека нема маргини на телото */
+    padding-top: 80px; /* Ова ќе осигура дека содржината не се преклопува со хедерот */
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.1rem 4%;
+    background-color: rgb(238, 231, 232);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    display: flex;
+}
+.navbar a {
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 3rem;
+}
+.icons {
+    font-size: 2.8rem;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+/*BREAKPOINTS*/
+@media (max-width: 992px) {
+    .header {
+        padding: 1.3rem 5%;
+    }    
+}
+.logo-img {
+    width: 50px; 
+    height: auto;
+    margin-left: 0; 
+}
+nav {
+    margin-left: auto; /* premesti navigacijo na desno*/
+}
+
+
+/* Recepies */
+
+/* Fullscreen home page section */
+.home-page {
+    height: 100vh; /* Ова ја прави секцијата да зазема цел екран */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Смена на бојата, можеш да ја прилагодиш */
+    text-align: center;
+    background: url('background.jpg') no-repeat center center/cover; /* Позадинска слика */
+}
+
+.home-page h1 {
+    font-size: 3rem;
+    color: #333;
+}
+
+.home-page p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Recepies Section */
+.Recepies {
+    padding: 40px 0;
+    color: white;
+    background-color: #d3d2c7;
+    border-radius: 20px; 
+    margin: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.recepies-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.recepies-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    max-width: 300px;
+    color:rgb(112, 109, 109); 
+}
+
+/* Recepies */
+.Recepies {
+    padding: 15px 0;
+    margin: 50px;
+    font-size: 20px;
+}
+
+.recepies-section {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recepies-card {
+    flex: 1 1 300px; 
+    margin: 50px;
+    text-align: center;
+}
+
+.recepies-card img {
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 20px; 
+}
+
+.view-recepie-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: rgb(224, 159, 159);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+}
+
+.view-recepie-btn:hover {
+    background-color: #000000;
+}
+
+/*Registration*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.registration {
+    background-color: rgb(207, 183, 183);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 750px;
+   
+}
+
+header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-field:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.forgot-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(222, 214, 139);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color:#ccc;
+}
+
+
+/* Cocktail Cards Section */
+
+.cocktail-card {
+    display: flex; /* Овозможува сликата и описот да бидат една до друга */
+    align-items: flex-start; /* Описот ќе биде израмнет со врвот на сликата */
+    margin: 20px;
+    max-width: 900px; /* Ограничување на максималната ширина */
+    gap: 20px; /* Простор меѓу сликата и описот */
+}
+
+/* Слика од коктелот */
+.cocktail-card img {
+    max-width: 250px; /* Поставува максимална ширина на сликата */
+    height: auto; /* Автоматско менување на висината според ширината */
+    border-radius: 10px; /* Заоблени агли */
+}
+
+/* Описот на коктелот, кој ќе се наоѓа десно од сликата */
+.cocktail-description {
+    flex: 1; /* Ова ќе направи описот да ја користи целата преостаната ширина */
+}
+
+/* Стилови за насловот и текстот */
+.cocktail-description h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cocktail-description p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Оценување со ѕвезди */
+.star-rating {
+    margin-top: 10px;
+}
+
+.star-rating label {
+    font-size: 2rem;
+    color: gold;
+    cursor: pointer;
+}
+
+
+
+
+/* Стил за список на коктели */
+h2 {
+    margin-top: 30px; /* Простор над заглавието */
+    color: #333; /* Боја на текстот */
+}
+
+ul {
+    list-style-type: none; /* Без точки пред елементите */
+    padding: 0; /* Отстранете внатрешно пополнување */
+}
+
+li {
+    display: flex; /* Дисплеј флекс за слика и опис */
+    align-items: center; /* Центрирај ги по вертикала */
+    justify-content: space-between; /* Простор помеѓу елементите */
+    margin: 15px 0; /* Простор над и под елементите */
+    padding: 10px; /* Простор околу секој елемент */
+    background-color: #f9f9f9; /* Лесна позадинска боја */
+    border-radius: 10px; /* Заоблени агли */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Лесна сенка */
+}
+
+.delete-button {
+    color: rgb(224, 159, 159); /* Боја на текстот за бришење */
+    text-decoration: none; /* Без подебел текст */
+    font-weight: bold; /* Полнење на текстот */
+    border: 2px solid rgb(224, 159, 159); /* Граница */
+    border-radius: 10px; /* Заоблени агли */
+    padding: 5px 10px; /* Простор околу текстот */
+    transition: background-color 0.3s ease; /* Анимација за промената на позадинската боја */
+}   
+
+.delete-button:hover {
+    background-color: rgb(224, 159, 159); /* Позадинска боја при ховер */
+    color: white; /* Текст боја при ховер */
+}
