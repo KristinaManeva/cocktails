@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session
+session_start();  
 ?>
 <?php
 include 'db_connect.php';
@@ -7,14 +7,14 @@ include 'db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Define filters
+
 $filter_date = isset($_GET['date_filter']) ? $_GET['date_filter'] : 'asc';
 $filter_name = isset($_GET['name_filter']) ? $_GET['name_filter'] : 'asc';
 
 // Build SQL query with filters
 $sql = "SELECT id, naziv, opis, datum_objave FROM SimpleKoktelj ORDER BY naziv $filter_name, datum_objave $filter_date";
 
-// Prepare the statement
+
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -22,7 +22,7 @@ $result = $stmt->get_result();
 // Delete cocktail functionality
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
-    // Prepare SQL to delete the cocktail
+   
     $delete_sql = "DELETE FROM SimpleKoktelj WHERE id = ?";
     $delete_stmt = $conn->prepare($delete_sql);
     $delete_stmt->bind_param("i", $delete_id);
@@ -41,7 +41,6 @@ if (isset($_GET['delete_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>View Cocktails</title>
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -50,13 +49,12 @@ if (isset($_GET['delete_id'])) {
 
         body {
             font-family: 'Arial', sans-serif;
-            background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-            min-height: 100vh;
+                min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #444;
+            background-color: rgb(238, 231, 232);
         }
 
         header {
@@ -75,7 +73,8 @@ if (isset($_GET['delete_id'])) {
             text-decoration: none;
             margin: 0 10px;
             color: #333;
-            font-weight: bold;
+            font-weight: normal;
+            font-size: 1.3rem;
         }
 
         main {
@@ -91,13 +90,14 @@ if (isset($_GET['delete_id'])) {
             text-align: center;
             margin-bottom: 20px;
             font-size: 24px;
-            color: #222;
+            color: pink;
         }
 
         .filter-form {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+        
         }
 
         .filter-form select {
@@ -143,11 +143,11 @@ if (isset($_GET['delete_id'])) {
         }
 
         .delete-button {
-            background-color: red;
+            background-color: grey;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
         }
 

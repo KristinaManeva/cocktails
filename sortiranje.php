@@ -1,8 +1,8 @@
 <?php
 // Preverjanje parametra za sortiranje, podprto za ASC in DESC
-$sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_asc';  // Privzeto sortiranje po 'id'
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_asc';  // sortiranje po 'id'
 
-// Povezava z bazo podatkov
+
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -24,11 +24,9 @@ switch($sort) {
         break;
 }
 
-// Izvajanje SQL poizvedbe
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Izpis podatkov v tabelo
     echo "<table>";
     echo "<tr><th>ID</th><th>Ime</th><th>Opis</th></tr>";
     

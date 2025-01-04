@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session
+session_start();  
 
 include 'db_connect.php';
 
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        // Bind the email to the prepared statement
+       
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $row['idUporabnik'];  // Store the user's ID in the session
                 echo "<script>alert('Login successful!'); window.location.href = 'index.php';</script>";
             } else {
-                // Invalid password
+                // invalid password
                 echo "<script>alert('Incorrect password!');</script>";
             }
         } else {
-            // User not found
+            // user not found
             echo "<script>alert('User not found!');</script>";
         }
 

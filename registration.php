@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@ session_start();  // Start the session
         $(document).ready(function() {
             $('form').submit(function(event) {
                 var valid = true;
-                // Check if all fields are filled
+               
                 $('.input-field').each(function() {
                     if ($(this).val() === "") {
                         valid = false;

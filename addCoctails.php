@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session
+session_start();  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,6 @@ session_start();  // Start the session
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Cocktail</title>
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -17,31 +16,32 @@ session_start();  // Start the session
 
         body {
             font-family: 'Arial', sans-serif;
-            background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background-color: rgb(238, 231, 232);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #444;
         }
 
         header {
             position: absolute;
             top: 0;
             width: 100%;
-            padding: 15px 30px;
+            padding: 35px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            background: rgba(255, 255, 255, 0.8);
+            color: white;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
         }
 
         header .navbar a {
             text-decoration: none;
             margin: 0 10px;
-            color: #333;
-            font-weight: bold;
+            color: #444; 
+            font-weight: normal;
+            font-size: 20px
         }
 
         main {
@@ -50,7 +50,7 @@ session_start();  // Start the session
             border-radius: 12px;
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
             max-width: 400px;
-            width: 90%;
+            width: 100%;
         }
 
         h1 {
@@ -64,6 +64,8 @@ session_start();  // Start the session
             display: flex;
             flex-direction: column;
             gap: 15px;
+            padding: 20px;
+            margin: 3px;
         }
 
         label {
@@ -73,10 +75,10 @@ session_start();  // Start the session
 
         input, textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 20px;
+            border: 1.5px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         button {
@@ -103,9 +105,7 @@ session_start();  // Start the session
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">My Cocktails</a>
        
-      
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="Recepies.php">Recepies</a>
