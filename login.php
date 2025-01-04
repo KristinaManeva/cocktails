@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // User found, now check the password
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['geslo'])) {
                 // Password is correct, user is logged in
