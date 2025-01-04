@@ -12,12 +12,24 @@ $filter_date = isset($_GET['date_filter']) ? $_GET['date_filter'] : 'asc';
 $filter_name = isset($_GET['name_filter']) ? $_GET['name_filter'] : 'asc';
 
 // Build SQL query with filters
-$sql = "SELECT naziv, opis, datum_objave FROM SimpleKoktelj ORDER BY naziv $filter_name, datum_objave $filter_date";
+$sql = "SELECT id, naziv, opis, datum_objave FROM SimpleKoktelj ORDER BY naziv $filter_name, datum_objave $filter_date";
 
 // Prepare the statement
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Delete cocktail functionality
+if (isset($_GET['delete_id'])) {
+    $delete_id = $_GET['delete_id'];
+    // Prepare SQL to delete the cocktail
+    $delete_sql = "DELETE FROM SimpleKoktelj WHERE id = ?";
+    $delete_stmt = $conn->prepare($delete_sql);
+    $delete_stmt->bind_param("i", $delete_id);
+    $delete_stmt->execute();
+    header("Location: viewCocktails.php"); // Refresh page after deletion
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -108,6 +120,9 @@ $result = $stmt->get_result();
             border-radius: 8px;
             background: white;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .cocktail-item h2 {
@@ -125,6 +140,19 @@ $result = $stmt->get_result();
         .cocktail-item .date {
             font-size: 12px;
             color: #999;
+        }
+
+        .delete-button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: darkred;
         }
 
         @media (max-width: 480px) {
@@ -182,9 +210,14 @@ $result = $stmt->get_result();
             <ul class="cocktail-list">
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <li class="cocktail-item">
-                        <h2><?php echo htmlspecialchars($row['naziv']); ?></h2>
-                        <p><?php echo htmlspecialchars($row['opis']); ?></p>
-                        <p class="date">Published on: <?php echo htmlspecialchars($row['datum_objave']); ?></p>
+                        <div>
+                            <h2><?php echo htmlspecialchars($row['naziv']); ?></h2>
+                            <p><?php echo htmlspecialchars($row['opis']); ?></p>
+                            <p class="date">Published on: <?php echo htmlspecialchars($row['datum_objave']); ?></p>
+                        </div>
+                        <div>
+                            <a href="?delete_id=<?php echo $row['id']; ?>" class="delete-button" onclick="return confirm('Are you sure you want to delete this cocktail?')">Delete</a>
+                        </div>
                     </li>
                 <?php endwhile; ?>
             </ul>
