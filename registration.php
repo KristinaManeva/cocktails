@@ -9,6 +9,44 @@ session_start();  // Start the session
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Registration</title>
+
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // jQuery for form validation
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                var valid = true;
+                // Check if all fields are filled
+                $('.input-field').each(function() {
+                    if ($(this).val() === "") {
+                        valid = false;
+                        $(this).css('border-color', 'red');
+                    } else {
+                        $(this).css('border-color', '#ccc');
+                    }
+                });
+                
+                if (!valid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                    alert("Please fill all the fields.");
+                }
+            });
+
+            // Optional: Show password toggle functionality
+            $('.password-toggle').click(function() {
+                var passField = $('input[name="password"]');
+                var passType = passField.attr('type');
+                if (passType === 'password') {
+                    passField.attr('type', 'text');
+                    $(this).text('Hide');
+                } else {
+                    passField.attr('type', 'password');
+                    $(this).text('Show');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <header class="header">
@@ -33,7 +71,8 @@ session_start();  // Start the session
     </header>
     
     <div class="registration">
-        <!-- Forma za registracijo -->
+        <h2>Register Now</h2>
+        <!-- Registration form -->
         <form action="registration_logic.php" method="POST">
             <div class="input-box">
                 <input type="text" name="ime" class="input-field" placeholder="Ime" autocomplete="off" required>
@@ -46,6 +85,8 @@ session_start();  // Start the session
             </div>
             <div class="input-box">
                 <input type="password" name="password" class="input-field" placeholder="Geslo" autocomplete="off" required>
+                <!-- Apply the same design to the toggle button -->
+                <button type="button" class="submit-btn password-toggle">Show</button>
             </div>
             <div class="input-submit">
                 <button type="submit" class="submit-btn">Potrdi</button>
