@@ -1,3 +1,6 @@
+<?php
+session_start();  // Start the session
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,14 +14,21 @@
 
 <body>
 <header>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="Recepies.html">Recepies </a>
-        <a href="Registration.html">Registration</a>
-        <a href="login.html">LogIn</a>
-
-
-    </nav>
+<nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="Recepies.php">Recepies</a>
+            
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- If logged in, show 'Log Out' and 'View Cocktails' -->
+                <a href="viewCocktails.php">View Cocktails</a>
+                <a href="addCoctails.php">Add Cocktails</a>
+                <a href="logout.php">Log Out</a>
+            <?php else: ?>
+                <!-- If not logged in, show 'Log In' -->
+                <a href="login.php">Login</a>
+                <a href="Registration.php">Registration</a>
+            <?php endif; ?>
+        </nav>
 <section class="Recepies">
     
     <div class="recepies-section">

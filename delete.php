@@ -9,7 +9,7 @@ if(isset($_GET['id'])) {
 
     if ($conn->query($sql) === TRUE) {
         echo "Recipe deleted successfully.";
-        header('Location: Recepies.html'); 
+        header('Location: Recepies.php'); 
         exit();
     } else {
         echo "Error deleting recipe: " . $conn->error;

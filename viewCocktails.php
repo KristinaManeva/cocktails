@@ -1,4 +1,7 @@
 <?php
+session_start();  // Start the session
+?>
+<?php
 include 'db_connect.php';
 
 error_reporting(E_ALL);
@@ -137,12 +140,19 @@ $result = $stmt->get_result();
         <img src="css/logo.png" alt="Logo" class="logo-img">
 
         <nav class="navbar">
-            <a href="index.html">Home</a>
-            <a href="Recepies.html">Recepies </a>
-            <a href="Registration.html">Registration</a>
-            <a href="login.html">LogIn</a>
-            <a href="logout.php">Log Out</a>
-            <a href="viewCocktails.php">View Cocktails</a>
+            <a href="index.php">Home</a>
+            <a href="Recepies.php">Recepies</a>
+            
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- If logged in, show 'Log Out' and 'View Cocktails' -->
+                <a href="viewCocktails.php">View Cocktails</a>
+                <a href="addCoctails.php">Add Cocktails</a>
+                <a href="logout.php">Log Out</a>
+            <?php else: ?>
+                <!-- If not logged in, show 'Log In' -->
+                <a href="login.php">Login</a>
+                <a href="Registration.php">Registration</a>
+            <?php endif; ?>
         </nav>
     </header>
 
